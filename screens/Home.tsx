@@ -9,7 +9,7 @@ import {
 const Home = ({ navigation }: {navigation: any}) => {
     return (
         <View style={styles.screen}>
-            <Text style={{fontSize: 20, textAlign: 'center'}}>Animations</Text>
+            <Text style={{fontSize: 25, textAlign: 'center'}}>React Reanimated</Text>
             <Button title="Swipe" onPress={() => navigation.navigate('Swipe')}/>
         </View>
     )

@@ -1,17 +1,24 @@
 import React from 'react';
 import {
     View,
-    Text,
     StyleSheet,
-    Button
 } from "react-native";
 
+import Ball from './components/Ball'
+
 const SwipeScreen = () => {
-    return(
-        <View>
-            <Text>SwipeScreen</Text>
+    return (
+        <View style={styles.screen}>
+            <Ball/>
         </View>
     );
 };
+
+const styles = StyleSheet.create({
+    screen: {
+        flex: 1,
+        backgroundColor: 'white'
+    },
+});
 
 export default SwipeScreen;
