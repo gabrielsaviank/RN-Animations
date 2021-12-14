@@ -1,13 +1,12 @@
 import React from 'react';
 import {
-    ScrollView,
+    View,
     StyleSheet,
     Text
 } from "react-native";
 import { Card, Button, Image } from 'react-native-elements';
 
 import Deck from './components/Deck';
-import {Screen} from "react-native-screens";
 
 const DATA = [
     { id: 1, text: 'Card #1', uri: 'https://www.destructoid.com/wp-content/uploads/2021/09/Lost-in-Random-Shadowman-screenshot.jpg' },
@@ -41,15 +40,15 @@ class SwipeScreen extends React.Component<any, any> {
 
     render () {
         return (
-            <ScrollView style={styles.screen}>
+            <View style={styles.screen}>
                 <Deck
                     data={DATA}
                     renderCard={this.renderCard}
                 />
-            </ScrollView>
+            </View>
         )
     }
-};
+}
 
 const styles = StyleSheet.create({
     screen: {
