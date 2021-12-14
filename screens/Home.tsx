@@ -9,8 +9,8 @@ import {
 const Home = ({ navigation }: {navigation: any}) => {
     return (
         <View style={styles.screen}>
-            <Text style={{fontSize: 25, textAlign: 'center'}}>React Reanimated</Text>
-            <Button title="Swipe" onPress={() => navigation.navigate('Swipe')}/>
+            <Text style={{fontSize: 25, textAlign: 'center', marginBottom: 40}}>React Reanimated</Text>
+            <Button title="Swipe" onPress={() => navigation.navigate('Swipe')} color='black'/>
         </View>
     )
 };
@@ -18,7 +18,8 @@ const Home = ({ navigation }: {navigation: any}) => {
 const styles = StyleSheet.create({
     screen: {
         flex: 1,
-        marginTop: 60
+        marginTop: 60,
+        padding: 10
     },
 });
 
