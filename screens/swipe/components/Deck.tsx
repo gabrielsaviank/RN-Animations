@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import {
     Animated,
-    PanResponder
+    PanResponder,
+    View
 } from "react-native";
 
 class Deck extends Component<any, any> {
@@ -21,19 +22,39 @@ class Deck extends Component<any, any> {
         this.state = { panResponder,position };
     }
 
+    getCardsStyle() {
+        const { position } = this.state;
+        const rotate = position.x.interpolate({
+            inputRange:  [-500, 0, 500],
+            outputRange: ['-120deg', '0deg', '120deg']
+        })
+
+        return {
+            ...position.getLayout(),
+            transform: [{rotate}]
+        }
+    }
+
     renderCards(){
-        return this.props.data.map(item => {
+        return this.props.data.map((item, index) => {
+            if( index === 0) {
+                return (
+                    <Animated.View
+                        style={this.getCardsStyle()}
+                        {...this.state.panResponder.panHandlers}
+                    >
+                        {this.props.renderCard(item)}
+                    </Animated.View>
+                )
+            }
             return this.props.renderCard(item);
         })
     }
     render(){
         return (
-            <Animated.View
-                style={this.state.position.getLayout()}
-                {...this.state.panResponder.panHandlers}
-            >
+            <View>
                 {this.renderCards()}
-            </Animated.View>
+            </View>
         );
     }
 }
