@@ -33,7 +33,7 @@ class Deck extends Component<any, any> {
             }
         });
 
-        this.state = { panResponder,position };
+        this.state = { panResponder,position, index: 0 };
     }
 
     forceSwipe(direction){
@@ -42,7 +42,8 @@ class Deck extends Component<any, any> {
             useNativeDriver: false,
             toValue: {x, y: 0},
             duration: SWIPE_OUT_DURATION
-        }).start()
+        }).start(() => this.onSwipeComplete(direction))
+        //next card comes here
     };
 
     resetPosition() {
@@ -51,6 +52,13 @@ class Deck extends Component<any, any> {
             toValue: {x: 0, y: 0}
         }).start()
     }
+
+    onSwipeComplete(direction){
+        const { onSwipeLeft, onSwipeRight, data } = this.props;
+        const item = data[this.state.index];
+
+        direction === 'right' ? onSwipeRight(item) : onSwipeLeft(item);
+    };
 
     getCardsStyle() {
         const { position } = this.state;
@@ -79,7 +87,7 @@ class Deck extends Component<any, any> {
                 )
             }
             return this.props.renderCard(item);
-        })
+        });
     }
     render(){
         return (
