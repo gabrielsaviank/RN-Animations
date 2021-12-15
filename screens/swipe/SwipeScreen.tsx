@@ -33,6 +33,7 @@ class SwipeScreen extends React.Component<any, any> {
                 <Button
                     icon={{name: 'code'}}
                     title="View Now!"
+                    buttonStyle={{backgroundColor: "grey"}}
                 />
             </Card>
         );
@@ -53,7 +54,7 @@ class SwipeScreen extends React.Component<any, any> {
 const styles = StyleSheet.create({
     screen: {
         flex: 1,
-        backgroundColor: '#fff',
+        backgroundColor: 'black',
     },
 });
 
