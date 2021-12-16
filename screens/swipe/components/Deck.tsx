@@ -11,6 +11,11 @@ const SWIPE_THRESHOLD = 0.25 * SCREEN_WIDTH;
 const SWIPE_OUT_DURATION = 250
 
 class Deck extends Component<any, any> {
+    static defaultProps = {
+        onSwipeRight: () => {},
+        onSwipeLeft: () => {}
+    }
+
     constructor(props) {
         super(props);
 
@@ -58,6 +63,8 @@ class Deck extends Component<any, any> {
         const item = data[this.state.index];
 
         direction === 'right' ? onSwipeRight(item) : onSwipeLeft(item);
+        this.state.position.setValue({ x: 0, y: 0 })
+        this.setState({ index: this.state.index + 1 })
     };
 
     getCardsStyle() {
@@ -74,8 +81,12 @@ class Deck extends Component<any, any> {
     }
 
     renderCards(){
-        return this.props.data.map((item, index) => {
-            if( index === 0) {
+        return this.props.data.map((item, i) => {
+            if( i < this.state.index) {
+                return null;
+            }
+
+            if( i === this.state.index ) {
                 return (
                     <Animated.View
                         keu={item.id}
@@ -86,6 +97,7 @@ class Deck extends Component<any, any> {
                     </Animated.View>
                 )
             }
+
             return this.props.renderCard(item);
         });
     }
