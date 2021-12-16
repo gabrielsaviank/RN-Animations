@@ -39,12 +39,26 @@ class SwipeScreen extends React.Component<any, any> {
         );
     };
 
+    renderNoMoreCards(){
+        return (
+            <Card>
+                <Card.Title>All Done Lad</Card.Title>
+                <Text style={{marginBottom: 10}}>Theres no more content here.</Text>
+                <Button
+                    buttonStyle={{backgroundColor: '#03a9f4'}}
+                    title="Get More"
+                />
+            </Card>
+        );
+    };
+
     render () {
         return (
             <View style={styles.screen}>
                 <Deck
                     data={DATA}
                     renderCard={this.renderCard}
+                    renderNoMoreCards={this.renderNoMoreCards}
                 />
             </View>
         )
