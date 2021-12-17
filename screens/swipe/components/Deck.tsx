@@ -44,15 +44,15 @@ class Deck extends Component<any, any> {
         this.state = { panResponder,position, index: 0 };
     };
 
-    componentWillReceiveProps(nextProps: Readonly<any>, nextContext: any) {
-        if(nextProps.data !== this.props.data){
-            this.setState({ index: 0})
-        };
-    };
-
     componentWillUpdate(nextProps: Readonly<any>, nextState: Readonly<any>, nextContext: any) {
         UIManager.setLayoutAnimationEnabledExperimental && UIManager.setLayoutAnimationEnabledExperimental(true);
         LayoutAnimation.spring()
+    };
+
+    componentWillReceiveProps(nextProps: Readonly<any>, nextContext: any) {
+        if(nextProps.data !== this.props.data){
+            this.setState({ index: 0})
+        }
     };
 
     forceSwipe(direction){
